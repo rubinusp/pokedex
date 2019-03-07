@@ -1,0 +1,80 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Pokedex</title>
+		<meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="/styles.css">
+        
+        <!-- bootstrap script -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="app">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Pokedex</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" v-on:click="setCurrGen(1)">FRLG</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" v-on:click="setCurrGen(2)">GHSS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" v-on:click="setCurrGen(3)">RSE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" v-on:click="setCurrGen(4)">DPP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" v-on:click="setCurrGen(5)">BW</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" v-on:click="setCurrGen(6)">XY</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Pokemon" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+
+            <aside class="aside">
+                <h5 class="aside-title">Build Your Team</h5>
+                <p class="aside-title">select and drag the pokemon into the boxes below</p>
+                <div class="add-boxes-grid">
+                    <div class="add-box" v-for="box in addBoxes" v-bind:class="add-box-display" v-on:drop="dropPokemon(box.num)" v-on:dragover.prevent>
+                        <img class="add-box-sprite" v-bind:src="getSprite(box.entry_number)"></img>
+                    </div>
+                </div>
+            </aside>
+            
+            <session class="session">
+                <div v-if="requesting">Loading</div>
+                <div class="pokedex-flex-container">
+                    <div class="pokedex-flex-element" v-for="pokemon in getPokemonEntries()" draggable="true" v-on:dragstart="dragPokemon(pokemon)">
+                        <img v-bind:src="getSprite(pokemon.entry_number)"/>
+                        <p>{{ pokemon.entry_number }}  {{ pokemon.pokemon_species.name }}</p>
+                    </div>
+                </div>
+            </session>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="/script.js"></script>
+    </body>
+</html>

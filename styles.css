@@ -1,0 +1,87 @@
+.add-box {
+    display: block;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    border: #111111;
+    border-style: dashed;
+    border-width: 1.5px;
+    margin: auto;
+    size: 14px;
+}
+
+.add-box-display {
+    padding: 20px;
+}
+
+.add-box-sprite {
+    width: 70px;
+    height: 70px;
+}
+
+.add-boxes-grid {
+    display: grid;
+    grid-template: 70px / auto auto;
+    grid-row-gap: 22px;
+}
+
+.aside {
+    display: block;
+    width: 200px;
+    height: 100%;
+    padding: 10px;
+    top: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    position: sticky;
+    float: left;
+    margin-left: 10px;
+    background-color: #DDDDDD;
+}
+
+@media only screen and (max-width: 600px) {
+    .aside {
+        width: 20vw;
+    }
+}
+
+.aside-title {
+    text-align: center;
+}
+
+.pokedex-flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pokedex-flex-element {
+    display: block;
+    margin: 3px;
+    border-radius: 5px;
+    text-align: center;
+    transition: box-shadow .3s;
+    transition: transform .3s;
+    height: 130px;
+    width: 120px;
+    -webkit-filter: grayscale(75%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(60%);
+}
+
+.pokedex-flex-element:hover {
+    transform: scale(1.08);
+    box-shadow: 0px 0px 8px #111111;
+    -webkit-filter: none;
+    filter: none;
+}
+
+.navbar {
+    margin-bottom: 10px;
+    background-color: aliceblue!important;
+}
+
+.nav-item {
+    margin-right: 5px;
+    margin-left: 5px;
+}
