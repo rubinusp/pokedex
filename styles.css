@@ -49,6 +49,18 @@
     text-align: center;
 }
 
+.footer-spacing {
+    margin-top: 8px;
+    text-align: center;
+}
+
+.footer-comment {
+    color: #4b4b4b;
+    font-size: 0.8em;
+    margin-right: 5px;
+    display: inline;
+}
+
 .pokedex-flex-container {
     display: flex;
     flex-direction: row;
@@ -85,3 +97,4 @@
     margin-right: 5px;
     margin-left: 5px;
 }
+
